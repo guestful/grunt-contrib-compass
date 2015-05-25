@@ -158,10 +158,12 @@ exports.init = function (grunt) {
 
 
     //Autoselect extension
-    args.unshift(path.basename(whichSync('compass')));
+    //args.unshift(path.basename(whichSync('compass')));
+    args.unshift('compass');
 
     if (options.bundleExec) {
-      args.unshift(path.basename(whichSync('bundle')), 'exec');
+      //args.unshift(path.basename(whichSync('bundle')), 'exec');
+      args.unshift('bundle', 'exec');
     }
 
     // add converted options

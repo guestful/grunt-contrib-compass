@@ -72,7 +72,7 @@ module.exports = function (grunt) {
         args.splice(doubleDashIdx === -1 ? args.length : doubleDashIdx, 0, '--config', path);
       }
 
-      binVersionCheck(args[0], '>=0.12.2', function (err) {
+      /*binVersionCheck(args[0], '>=0.12.2', function (err) {
         if (err) {
           grunt.warn(err);
         }
@@ -81,7 +81,13 @@ module.exports = function (grunt) {
           bannerCallback();
           cb();
         });
-      });
+      });*/
+      
+      compile(args, function () {
+          bannerCallback();
+          cb();
+        });
+        
     });
   });
 };

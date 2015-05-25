@@ -14,9 +14,11 @@ module.exports = function (grunt) {
 
   function compile(args, cb) {
     grunt.log.verbose.writeln('Running command: ' + args.join(' '));
-    args.unshift(process.platform === 'win32' ? '/c' : '-c')
+    if(process.platform === 'win32') {
+      args = ['cmd.exe',  '/c', args.join(' ')];
+    }
     var child = grunt.util.spawn({
-      cmd: process.platform === 'win32' ? 'cmd.exe' : 'bash',
+      cmd: args.shift(),
       args: args
     }, function (err, result, code) {
       if (code === 127) {
